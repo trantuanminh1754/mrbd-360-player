@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- MRBD required metadata -->
+  <meta name="description" content="Look around a 360° video by turning your head.">
+  <meta name="mrbd-web-app-capable" content="yes">
+
+  <!-- Fixed viewport, no zoom -->
+  <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
+
+  <!-- App icon (MRBD requires PNG >=52x52, no SVG) -->
+  <link rel="icon" href="assets/icon-96.png" sizes="96x96">
+
+  <title>360 Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="stage">
+    <canvas id="scene"></canvas>
+
+    <!-- HUD overlay: additive-safe, bright on transparent black -->
+    <div id="hud">
+      <div id="status">Look around to start</div>
+
+      <div id="controls">
+        <button id="btn-play" class="focusable" aria-label="Play or pause">▶</button>
+        <button id="btn-recenter" class="focusable" aria-label="Recenter view">⟳ Recenter</button>
+      </div>
+    </div>
+
+    <!-- Center reticle shows where "forward" is while calibrating -->
+    <div id="reticle"></div>
+  </div>
+
+  <video id="video360" src="assets/video360.mp4" loop muted playsinline crossorigin="anonymous" style="display:none;"></video>
+
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
